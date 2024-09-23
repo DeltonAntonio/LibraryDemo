@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using LibraryDemo.MVVM.Views;
+using LibraryDemo.Services;
+using Microsoft.Extensions.Logging;
 
 namespace LibraryDemo
 {
@@ -14,7 +16,8 @@ namespace LibraryDemo
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
+            builder.Services.AddSingleton<IBookService, BookService>();
+            builder.Services.AddTransient<AddView>();
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
